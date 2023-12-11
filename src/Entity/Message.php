@@ -21,6 +21,8 @@ class Message
     private ?string $Prenom = null;
 
     #[ORM\Column(length: 120)]
+    #[Assert\Email(message: 'The email {{ value }} is not a valid email.',
+    )]
     private ?string $Mail = null;
 
     #[ORM\Column(length: 255)]
