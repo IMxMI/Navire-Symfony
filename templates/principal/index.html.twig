@@ -1,20 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PrincipalController!{% endblock %}
+{% block title %}ShipSio{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <script type="text/javascript">
+        // Map appearance
+        var width = "100%";         // width in pixels or percentage
+        var height = "300";         // height in pixels
+        var latitude = "0.00";      // center latitude (decimal degrees)
+        var longitude = "0.00";     // center longitude (decimal degrees)
+        var zoom = "3";             // initial zoom (between 3 and 18)
+        var names = false;          // always show ship names (defaults to false)
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        // Single ship tracking
+        var mmsi = "123456789";     // display latest position (by MMSI)
+        var imo = "1234567";        // display latest position (by IMO, overrides MMSI)
+        var show_track = false;     // display track line (last 24 hours)
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/maxim/source/repos/navire/src/Controller/PrincipalController.php'|file_link(0) }}">src/Controller/PrincipalController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/maxim/source/repos/navire/templates/principal/index.html.twig'|file_link(0) }}">templates/principal/index.html.twig</a></code></li>
-    </ul>
-</div>
+        // Fleet tracking
+        var fleet = "e48ab3d80a0e2a9bf28930f2dd08800c"; // your personal Fleet key (displayed in your User Profile)
+        var fleet_name = "Carnival"; // display particular fleet from your fleet list
+        var fleet_timespan = "1440"; // maximum age in minutes of the displayed ship positions
+    </script>
+    <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
 {% endblock %}
