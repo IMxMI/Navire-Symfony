@@ -1,4 +1,3 @@
-{% include '/elements/navbar.html.twig' %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,8 +16,9 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+    {% include '/elements/navbar.html.twig' %}
     <body>
-        {% block navbar %}{% endblock %}
         {% block body %}{% endblock %}
+        {% include '/elements/footer.html.twig' %}
     </body>
 </html>
