@@ -1,14 +1,20 @@
 {% block footer %}
-    <footer class="bg-primary">
-        <div class="row">
+    <footer class="bg-primary fixed-bottom py-1">
+        <div class="row align-items-center">
             <div class="col-sm">
-                Contact
+                <p>
+                    <a class="text-decoration-none text-light" href="{{ path('demandeContact') }}">Contact</a><br>
+                    <a class="text-decoration-none text-light" href="https://github.com/IMxMI">Github de Vernoux Maxime</a>
+                </p>
             </div>
             <div class="col-sm text-center">
-                One of three columns
+                    <img class="img-fluid h-100" src="{{ asset('assets/img/753331.jpg') }}" alt="Bateau commercial"/>
             </div>
             <div class="col-sm text-end">
-                One of three columns
+                <p>
+                    <a class="text-decoration-none text-light" href="#">Mentions légales</a><br>
+                    <a class="text-decoration-none text-light" href="#">Plan du site</a>
+                </p>
             </div>
         </div>
     </footer>
