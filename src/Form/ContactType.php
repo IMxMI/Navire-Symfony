@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Email;
 use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ContactType extends AbstractType {
 
@@ -24,7 +25,7 @@ class ContactType extends AbstractType {
                 ->add('Mail', TextType::class, [
                     'required' => true,
                 ])
-                ->add('Message', TextType::class, [
+                ->add('Message', TextareaType::class, [
                     'required' => true,
                 ])
         ;
