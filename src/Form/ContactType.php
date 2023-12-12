@@ -6,9 +6,10 @@ use App\Entity\Message;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints\Email;
 use Doctrine\DBAL\Types\DateTimeType;
+use Symfony\Component\Form\FormTypeInterface;
 
 class ContactType extends AbstractType {
 
