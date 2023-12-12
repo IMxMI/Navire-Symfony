@@ -3,7 +3,25 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}  
-    <button class="success" type="submit">Envoyer</button>
+    {{ form_start(form, {'attr': {'class': 'mt-4'}}) }}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_row(form.Nom, { 'label': 'Nom de famille', 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.Prenom, { 'label': 'Prénom', 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.Mail, { 'label': 'Mail', 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_row(form.Message, { 'label': 'Message', 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+    <button class="btn btn-success" type="submit">Envoyer</button>
     {{ form_end(form) }}
 {% endblock %}
