@@ -44,7 +44,7 @@ class Navire {
     private ?float $tirantdeau = null;
 
     #[ORM\ManyToOne(inversedBy: 'navires')]
-    #[ORM\JoinColumn(name: 'idaisshiptype', refencedColumnName: 'id', nullable: false)]
+    #[ORM\JoinColumn(name: 'idaisshiptype', nullable: false)]
     private ?AisShipType $aisShipType = null;
 
     #[ORM\ManyToOne(inversedBy: 'navires')]
@@ -145,11 +145,13 @@ class Navire {
         return $this;
     }
 
-    public function getPavillon(): ?Pays {
+    public function getPavillon(): ?Pays
+    {
         return $this->Pavillon;
     }
 
-    public function setPavillon(?Pays $Pavillon): static {
+    public function setPavillon(?Pays $Pavillon): static
+    {
         $this->Pavillon = $Pavillon;
 
         return $this;
