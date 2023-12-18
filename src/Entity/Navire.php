@@ -50,7 +50,7 @@ class Navire {
     private ?AisShipType $aisShipType = null;
 
     #[ORM\ManyToOne(inversedBy: 'navires')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: 'idpays', referencedColumnName: 'id', nullable: false)]
     private ?Pays $Pavillon = null;
 
     #[ORM\ManyToOne(inversedBy: 'navires', cascade: ['persist'])]
@@ -60,8 +60,7 @@ class Navire {
     #[ORM\OneToMany(mappedBy: 'idnavire', targetEntity: Escale::class, orphanRemoval: true)]
     private Collection $escales;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->escales = new ArrayCollection();
     }
 
@@ -182,13 +181,11 @@ class Navire {
     /**
      * @return Collection<int, Escale>
      */
-    public function getEscales(): Collection
-    {
+    public function getEscales(): Collection {
         return $this->escales;
     }
 
-    public function addEscale(Escale $escale): static
-    {
+    public function addEscale(Escale $escale): static {
         if (!$this->escales->contains($escale)) {
             $this->escales->add($escale);
             $escale->setIdnavire($this);
@@ -197,8 +194,7 @@ class Navire {
         return $this;
     }
 
-    public function removeEscale(Escale $escale): static
-    {
+    public function removeEscale(Escale $escale): static {
         if ($this->escales->removeElement($escale)) {
             // set the owning side to null (unless already changed)
             if ($escale->getIdnavire() === $this) {

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Table(name:'AisShipType')]
 #[ORM\Entity(repositoryClass: AisShipTypeRepository::class)]
 class AisShipType
 {
@@ -15,7 +16,7 @@ class AisShipType
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name:'aisshiptype')]
     #[Assert\Range(
             min: 1,
             max: 9,
@@ -29,9 +30,13 @@ class AisShipType
     #[ORM\OneToMany(mappedBy: 'aisShipType', targetEntity: Navire::class)]
     private Collection $navires;
 
+    #[ORM\ManyToMany(targetEntity: Port::class, mappedBy: 'types')]
+    private Collection $portsCompatibles;
+
     public function __construct()
     {
         $this->navires = new ArrayCollection();
+        $this->portsCompatibles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,6 +93,33 @@ class AisShipType
             if ($navire->getAisShipType() === $this) {
                 $navire->setAisShipType(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Port>
+     */
+    public function getPortsCompatibles(): Collection
+    {
+        return $this->portsCompatibles;
+    }
+
+    public function addPortsCompatible(Port $portsCompatible): static
+    {
+        if (!$this->portsCompatibles->contains($portsCompatible)) {
+            $this->portsCompatibles->add($portsCompatible);
+            $portsCompatible->addType($this);
+        }
+
+        return $this;
+    }
+
+    public function removePortsCompatible(Port $portsCompatible): static
+    {
+        if ($this->portsCompatibles->removeElement($portsCompatible)) {
+            $portsCompatible->removeType($this);
         }
 
         return $this;
