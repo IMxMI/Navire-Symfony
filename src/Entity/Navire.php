@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NavireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -50,6 +52,18 @@ class Navire {
     #[ORM\ManyToOne(inversedBy: 'navires')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Pays $Pavillon = null;
+
+    #[ORM\ManyToOne(inversedBy: 'navires', cascade: ['persist'])]
+    #[ORM\JoinColumn(name: 'idport', referencedColumnName: 'id', nullable: true)]
+    private ?port $destination = null;
+
+    #[ORM\OneToMany(mappedBy: 'idnavire', targetEntity: Escale::class, orphanRemoval: true)]
+    private Collection $escales;
+
+    public function __construct()
+    {
+        $this->escales = new ArrayCollection();
+    }
 
     public function getId(): ?int {
         return $this->id;
@@ -145,14 +159,52 @@ class Navire {
         return $this;
     }
 
-    public function getPavillon(): ?Pays
-    {
+    public function getPavillon(): ?Pays {
         return $this->Pavillon;
     }
 
-    public function setPavillon(?Pays $Pavillon): static
-    {
+    public function setPavillon(?Pays $Pavillon): static {
         $this->Pavillon = $Pavillon;
+
+        return $this;
+    }
+
+    public function getDestination(): ?port {
+        return $this->destination;
+    }
+
+    public function setDestination(?port $destination): static {
+        $this->destination = $destination;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Escale>
+     */
+    public function getEscales(): Collection
+    {
+        return $this->escales;
+    }
+
+    public function addEscale(Escale $escale): static
+    {
+        if (!$this->escales->contains($escale)) {
+            $this->escales->add($escale);
+            $escale->setIdnavire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEscale(Escale $escale): static
+    {
+        if ($this->escales->removeElement($escale)) {
+            // set the owning side to null (unless already changed)
+            if ($escale->getIdnavire() === $this) {
+                $escale->setIdnavire(null);
+            }
+        }
 
         return $this;
     }
