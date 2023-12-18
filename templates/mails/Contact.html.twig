@@ -1,1 +1,31 @@
-<h1>TEST TEST TEST TEST TEST TEST TEST TEST TEST</h1>
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Confirmation de prise de contact</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; padding: 20px;">
+
+        <div style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <h2 style="text-align: center; color: #007bff;">Confirmation de prise de contact</h2>
+
+            <p>Bonjour,</p>
+
+            <p>Nous vous confirmons que nous avons bien reçu votre demande de contact. Notre équipe vous contactera dans les plus brefs délais.</p>
+
+            <p>Voici un récapitulatif de vos informations :</p>
+
+            <ul>
+                <li><strong>Nom :</strong> {{ message.getNom }}</li>
+                <li><strong>Prenom :</strong> {{ message.getPrenom }}</li>
+                <li><strong>Email :</strong> {{ message.getMail }}</li>
+                <li><strong>Message :</strong> {{ message.getMessage }}</li>
+            </ul>
+
+            <p>Merci de nous avoir contactés. Nous sommes impatients de vous assister.</p>
+
+            <p>Cordialement,<br>L'équipe Navire</p>
+        </div>
+
+    </body>
+</html>
