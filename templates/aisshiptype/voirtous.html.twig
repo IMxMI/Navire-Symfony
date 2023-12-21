@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AisShipTypeController!{% endblock %}
+{% block title %}Ais Types{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -17,7 +17,7 @@
                     <tr class="table-primary">
                         <td>{{ type.aisshiptype }}</td>
                         <td>{{ type.libelle }}</td>
-                        <td> <a href="{{ path('aisshiptype portscompatibles', {id: type.id}) }}">Ports compatibles</a></td>
+                        <td> <a href="{{ path('aisshiptypeportscompatibles', {id: type.id}) }}">Ports compatibles</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
