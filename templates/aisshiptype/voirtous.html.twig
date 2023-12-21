@@ -17,7 +17,7 @@
                     <tr class="table-primary">
                         <td>{{ type.aisshiptype }}</td>
                         <td>{{ type.libelle }}</td>
-                        <td> <a href="#">Ports compatibles</a></td>
+                        <td> <a href="{{ path('aisshiptype portscompatibles', {id: type.id}) }}">Ports compatibles</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
