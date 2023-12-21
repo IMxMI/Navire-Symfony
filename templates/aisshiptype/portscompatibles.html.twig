@@ -3,7 +3,7 @@
 {% block title %}Ports compat{% endblock %}
 
 {% block body %}
-    <div class="container" style="margin-bottom: 10em!important;">
+    <div class="container" style="margin-bottom: 7em!important;">
         <center>
             <h2>Ports compatibles</h2>
             <h2>Type de navire : {{ aisShipType.AisShipType}} {{aisShipType.Libelle }}</h2>
@@ -23,6 +23,7 @@
                             <td>{{  port.getIndicatif()}}</td>
                             <td>{{  port.getNom()}}</td>
                             <td>{{  port.getPays().getNom()}}</td>
+                            <td><a href="{{ path('aisshiptypeportscompatibles', {id: port.getPays().getId()}) }}">{{ port.getPays().getNom() }}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
