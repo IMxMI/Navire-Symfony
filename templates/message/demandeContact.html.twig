@@ -10,22 +10,44 @@
 
         <div class="row">
             <div class="col">
-                {{ form_row(form.Nom, { 'label': 'Nom de famille', 'attr': {'class': 'form-control'} }) }}
+                {{ form_row(form.imo, {'attr': {'class': 'form-control'} }) }}
             </div>
             <div class="col">
-                {{ form_row(form.Prenom, { 'label': 'Prénom', 'attr': {'class': 'form-control'} }) }}
+                {{ form_row(form.nom, {'attr': {'class': 'form-control'} }) }}
             </div>
         </div>
 
-        <div class="form-group mb-3">
-            {{ form_row(form.Mail, { 'label': 'Mail', 'attr': {'class': 'form-control', 'placeholder': 'Exemple@mail.com'} }) }}
+        <div class="row">
+            {{ form_row(form.MMSI, { 'attr': {'class': 'form-control'} }) }}
         </div>
 
-        <div class="form-group mb-3">
-            {{ form_row(form.Message, { 'label': 'Message', 'attr': {'class': 'form-control'} }) }}
+        <div class="row">
+            {{ form_row(form.indicatifappel, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.Eta, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.longueur, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.largeur, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.tirantdeau, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.aisShipType, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.Pavillon, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.destination, { 'attr': {'class': 'form-control'} }) }}
         </div>
 
         <button class="btn btn-success" type="submit">Envoyer</button>
         {{ form_end(form) }}
+        <button class="btn btn-success">Retour</button>
     </div>
 {% endblock %}

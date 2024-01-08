@@ -25,7 +25,7 @@
                         <td>{{ navire.aisShipType.libelle }}</td>
                         <td>{{ navire.destination.nom }}</td>
                         <td>{{ navire.eta.format('d-m-Y H:i') }}</td>
-                        <td> <a href="#">Editer</a></td>
+                        <td> <a href="{{ path('navire_edit', {id: navire.id}) }}">Editer</a></td>
                     </tr>
                 {% endfor %}
             </tbody>

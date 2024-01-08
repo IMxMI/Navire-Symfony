@@ -1,20 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NavireController!{% endblock %}
+{% block title %}Modification Navire{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-2">
+                {{ form_label(form.imo, 'IMO') }}
+                {{ form_widget(form.imo, {'attr': {'placeholder': 'IMO Number', 'readonly':'true'}}) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(form.Nom, 'Nom du Navire') }}
+                {{ form_widget(form.Nom, {'attr': {'placeholder': 'Saisir le nom du navire'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                {{ form_label(form.MMSI, 'MMSI') }}
+                {{ form_widget(form.MMSI, {'attr': {'placeholder': 'MMSI Number'}}) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(form.indicatifappel, 'Indicatif VHF') }}
+                {{ form_widget(form.indicatifappel, {'attr':{'placeholder':'Indicatif VHF'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                {{ form_label(form.longueur, 'Longueur du navire') }}
+                {{ form_widget(form.longueur, {'attr': {'placeholder': 'Longueur'}}) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(form.largeur, 'Largeur du navire') }}
+                {{ form_widget(form.largeur, {'attr':{'placeholder':'Largeur'}}) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(form.tirantdeau, 'Tirant deau du navire') }}
+                {{ form_widget(form.tirantdeau, {'attr': {'placeholder': "Tiran d'eau"}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                {{ form_label(form.aisShipType, 'Type de navire') }}
+                {{ form_widget(form.aisShipType, {'attr': {'placeholder': 'Type de navire'}}) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(form.Pavillon, 'Pavillon') }}
+                {{ form_widget(form.Pavillon, {'attr':{'placeholder':'Pavillon'}}) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                {{ form_label(form.destination, 'Destination') }}
+                {{ form_widget(form.destination, {'attr': {'placeholder': 'Destination'}}) }}
+            </div>
+            <div class="col-2">
+                {{ form_label(form.Eta, 'Eta') }}
+                {{ form_widget(form.Eta, {'attr':{'placeholder':'Estimated Time Arrival'}}) }}
+            </div>
+        </div>
+        </br>
+        <a type="button" class="btn btn-success" style="width:100px" href="{{ path('navire_voirtous') }}">retour</a>
+        <button type="submit" style="width: 100px" class="btn btn-success">Modifier</button>
+        {{ form_end(form) }}
+        </br>
+        <script type="text/javascript">
+            // Map appearance
+            var width = "100%";         // width in pixels or percentage
+            var height = "300";         // height in pixels
+            var names = true;           // always show ship names (defaults to false)
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+            // Single ship tracking
+            var imo
+            = {{ navire.imo}}; // display latest position (by IMO, overrides MMSI)
+                    var show_track = true;      // display track line (last 24 hours)
+        </script>
+        <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/maxim/source/repos/navire/src/Controller/NavireController.php'|file_link(0) }}">src/Controller/NavireController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/maxim/source/repos/navire/templates/navire/index.html.twig'|file_link(0) }}">templates/navire/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+    {% endblock %}
