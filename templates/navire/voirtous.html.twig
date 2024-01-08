@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les navires{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 100px;">IMO</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">MMSI</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">ETA</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for navire in navires %}
+                    <tr class="table-primary">
+                        <td>{{ navire.imo }}</td>
+                        <td>{{ navire.nom }}</td>
+                        <td>{{ navire.mmsi }}</td>
+                        <td>{{ navire.aisShipType.libelle }}</td>
+                        <td>{{ navire.destination.nom }}</td>
+                        <td>{{ navire.eta.format('d-m-Y H:i') }}</td>
+                        <td> <a href="#">Editer</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
