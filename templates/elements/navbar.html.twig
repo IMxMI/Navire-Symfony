@@ -19,5 +19,13 @@
                 </ul>
             </div>
         </div>
+        <div>
+            {% if app.user %}
+                <p>{{ app.user.username }}</p>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a>
+            {% endif %}
+        </div>
     </nav>
 {% endblock %}
